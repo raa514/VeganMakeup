@@ -15,14 +15,14 @@ import { FilterMakeupComponent } from 'src/app/filter-makeup/filter-makeup.compo
 })
 export class MakeupProductComponent implements OnInit {
 
-  products:any[] | undefined ;
+  products:any[] =[] ;
   data: any[] | undefined;
   mode: ProgressSpinnerMode = 'indeterminate';
   loading: boolean = false;
   @Input() toBeSearched: string ='';
   initial: number = 0;
   final: number = 21;
-  maxLength: number =930;
+  maxLength: any;
   priceLessThanFlag: boolean = true;
 
   constructor(
@@ -42,12 +42,12 @@ export class MakeupProductComponent implements OnInit {
   getProducts(){
     console.log(this.loading);
     this.makeupSrv.getMakeup().subscribe(res=>{
-      this.products = res;
-      // this.makeupSrv.getLoaderChanges().subscribe(res=>{
-      //   this.loading = res;
-      //   console.log(res);
-      // })
+      this.products =  Object.values(res);
+      this.maxLength = this.products.length;
+      this.initiateProducts(this.initial, this.final);
+      console.log(this.products.length);
     })
+
     // this.makeupSrv.getMakeup().subscribe((res)=>{
     //   this.data = Object.values(res);
     //   if (this.data.length != 0) {
@@ -63,7 +63,7 @@ export class MakeupProductComponent implements OnInit {
   initiateProducts(i: number, f: number){
     // this.products = this.data;
     this.makeupSrv.getProduct().subscribe(res=>{
-      // this.products = res.slice(i,f);
+      this.products = res.slice(i,f);
     })
   }
 
@@ -71,12 +71,13 @@ export class MakeupProductComponent implements OnInit {
     // this.loading = this.makeupSrv.isLoading;
     this.makeupSrv.searchMakeupByBrand('').subscribe(res=>{
       // this.products = res;
-      this.maxLength = res.length;
+      // this.maxLength = res.length;
       // this.loading = this.makeupSrv.isLoading;
     })
   }
 
   loadMoreProducts(){
+    console.log(this.final+' '+this.maxLength );
     if(this.final<=this.maxLength){
       this.final += 21;
     this.initiateProducts(this.initial, this.final);
