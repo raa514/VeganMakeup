@@ -1,0 +1,53 @@
+.example-card{
+  width: 50vmin;
+  margin-bottom: 5vmin;
+}
+
+.card-container{
+  display: flex;
+  flex-direction: row;
+  flex-flow: row wrap;
+  align-content: space-between;
+  justify-content: space-between;
+}
+
+.filter-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  flex-direction: column;
+}
+
+.filter{
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.line{
+  height: 2px;
+  /* border-radius: 43%; */
+  margin: 4vmin 0 4vmin 0;
+  width: 80%;
+  /* color: black; */
+  background-color: rgb(224, 216, 216);
+}
+
+.tags{
+  display: flex;
+}
+
+.price{
+  font-size: larger;
+  font-weight: 700;
+}
+
+.example-chip-list {
+  width: 100%;
+}
+
+.example-pizza-party {
+  color: hotpink;
+}
+

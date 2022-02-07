@@ -1,0 +1,44 @@
+<div class="container">
+    
+    <!-- <div class="loading" *ngIf="loading; else notLoading">
+        <div class="dots-bars-3"></div>
+    </div> -->
+    <app-loader  *ngIf="loading; else notLoading" ></app-loader>
+    <ng-template #notLoading>
+        <div class="filter-container">
+            <div class="filter">
+                <span class="material-icons" (click)="openFilter()" >filter_alt</span>
+            </div>
+            <div class="line" ></div>
+        </div>
+        <div class="card-container">
+            <mat-card class="example-card" *ngFor="let product of products">
+                <mat-card-header>
+                    <div mat-card-avatar class="example-header-image"></div>
+                    <mat-card-title>{{product.brand}} </mat-card-title>
+                    <mat-card-subtitle>{{product.name}}</mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image [src]="product.image_link" [alt]="product.category">
+                <mat-card-content>
+                    <p>
+                        {{product.description}}
+                    </p>
+                </mat-card-content>
+                <mat-card-content class="price">
+                    <p>
+                        {{product.price}} {{' ' +product.price_sign}}
+                    </p>
+                </mat-card-content>
+                <mat-chip-list  >
+                    <mat-chip *ngFor="let tag of product.tag_list">
+                        {{tag}}
+                    </mat-chip>
+                    <!-- <button mat-button><mat-icon>cancel</mat-icon> </button> -->
+                </mat-chip-list>
+            </mat-card>
+        </div>
+        <div class="pagination">
+           <mat-card  (click)="loadMoreProducts()" ><p id="loadMore" >Load more products...</p> </mat-card>
+        </div>
+    </ng-template>
+</div>

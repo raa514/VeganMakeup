@@ -1,0 +1,62 @@
+<form class="filter-container" [formGroup]="filterForm">
+	<h6>*Select only one filter at a time.</h6>
+	<div>
+		<mat-accordion class="acordian" multi>
+			<mat-expansion-panel [disabled]="byPrice">
+				<mat-expansion-panel-header>
+					<mat-panel-title>
+						Based on price
+					</mat-panel-title>
+				</mat-expansion-panel-header>
+				<mat-form-field appearance="legacy" name="fieldName" ngDefaultControl>
+					<mat-label>Price Greater Than</mat-label>
+					<input matInput placeholder="Price Greater Than" formControlName="priceGreaterThan"
+						(input)="toDisable($event, 'priceGreaterThan')">
+					<mat-hint>Hint</mat-hint>
+				</mat-form-field>
+
+				<mat-form-field appearance="legacy" name="fieldName" ngDefaultControl>
+					<mat-label>Price Less Than</mat-label>
+					<input matInput placeholder="Price Less Than" formControlName="priceLessThan"
+					(input)="toDisable($event, 'priceLessThan')">
+
+					<mat-hint>Hint</mat-hint>
+				</mat-form-field>
+
+
+			</mat-expansion-panel>
+			<mat-expansion-panel [disabled]="byType" >
+				<mat-expansion-panel-header>
+					<mat-panel-title>
+						Based Product type
+					</mat-panel-title>
+				</mat-expansion-panel-header>
+				<mat-form-field appearance="legacy" name="fieldName" ngDefaultControl>
+					<mat-label>Product Type</mat-label>
+					<mat-select formControlName="productType" >
+						<mat-option *ngFor="let type of productType" [value]="type" (click)="toDisable($event, 'productType')">
+							{{type}}
+						</mat-option>
+					</mat-select>
+				</mat-form-field>
+				<mat-form-field appearance="legacy" name="fieldName" ngDefaultControl>
+					<mat-label>Category of Product</mat-label>
+					<mat-select formControlName="categoryType" [disabled]="disableFlag" >
+						<mat-option *ngFor="let type of subcategoryList" [value]="type.name">
+							{{type.name}}
+						</mat-option>
+					</mat-select>
+				</mat-form-field>
+			</mat-expansion-panel>
+
+		</mat-accordion>
+	</div>
+	<div class="footer-button">
+		<button mat-flat-button (click)="submit()">
+			SUBMIT
+		</button>
+		<button mat-flat-button (click)="clearFilter()">
+			Clear Filter
+		</button>
+	</div>
+</form>

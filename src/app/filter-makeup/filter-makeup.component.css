@@ -1,0 +1,28 @@
+
+
+mat-form-field{
+    margin: 20px;
+    width: 80%;
+}
+
+.footer-button{
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+button{
+    background-color: #DD4A48 ;
+    color: white;
+}
+
+.mat-form-field-ripple {
+    color: #DD4A48 !important;
+}
+
+h6{
+    color: #b6aeae;
+}
+.acordian{
+    margin: 2vmin;
+}
