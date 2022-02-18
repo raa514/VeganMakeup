@@ -23,6 +23,7 @@ import { FilterMakeupComponent } from './filter-makeup/filter-makeup.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { ColorTagDirective } from './color-tag.directive';
 
 
 
@@ -34,7 +35,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MakeupBodyComponent,
     MakeupProductComponent,
     LoaderComponent,
-    FilterMakeupComponent
+    FilterMakeupComponent,
+    ColorTagDirective
   ],
   imports: [
     BrowserModule,

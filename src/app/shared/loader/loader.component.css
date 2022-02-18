@@ -1,71 +1,26 @@
-/* .container{
-  width: 100%;
-  height: 100%;
+
+
+@import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-y:none;
+  font-family: 'Abel', sans-serif;
 }
 
-.loading{
-  position: relative;
-  right: -75vmin;
-  bottom: -20vmin;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
+h2{
+  font-family: 'Abel', sans-serif;
+
 }
-
-.dots-bars-3 {
-    width: 40px;
-    height: 26px;
-    --c: linear-gradient(currentColor 0 0);
-    background:
-      var(--c) 0    100%,
-      var(--c) 50%  100%,
-      var(--c) 100% 100%;
-    background-size:8px calc(100% - 4px);
-    background-repeat: no-repeat;
-    position: relative;
-  }
-  
-  .dots-bars-3:before {
-    content: "";
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background:currentColor;
-    left:0;
-    top:0;
-    animation: 
-    db3-1 1.5s  linear infinite alternate,
-    db3-2 0.75s cubic-bezier(0,200,.8,200) infinite;
-  }
-  
-  
-    
-  @keyframes db3-1 {
-    100% {left:calc(100% - 8px)}
-  }
-  
-  @keyframes db3-2 {
-    100% {top:-0.1px}
-  }
-     */
-
-     *{
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    overflow-y:none;
-  }
   
   .canvas{
       position: relative;
       display: flex;
       justify-content: center;
       align-items: center;
-      /* background-color: #c79c51;
-      background-image: linear-gradient(#583D72,#9F5F80, #FF8474,#FFC996);
-      width: 100%;
-      height: 100vh; */
   }
   
   .heading{
@@ -76,7 +31,13 @@
       color: blanchedalmond;
       opacity: 0.5;
   }
-  
+  .text{
+    position: absolute;
+    margin-top: 70vmin;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   .halo{
       position: absolute;
       width: 7vmin;
@@ -91,26 +52,6 @@
   }
 
   @keyframes rotate-weird {
-    /* 0% {
-      transform-origin: left bottom;
-      transform: rotate(-90deg);
-      opacity: 1;
-    }
-    25% {
-      transform-origin: left bottom;
-      transform: rotate(0);
-      opacity: 1;
-    }
-    50% {
-      transform-origin: left bottom;
-      transform: rotate(-90deg);
-      opacity: 1;
-    }
-    100% {
-      transform-origin: left bottom;
-      transform: rotate(0);
-      opacity: 1;
-    } */
 
     0% {
       opacity: 0;
@@ -174,6 +115,16 @@
       bottom: -5%;
       color: blanchedalmond;
   }
+  @media screen and (max-width: 480px){
+    .halo{
+      margin-top: 140vmin;
+    }
+    .text{
+      margin-top: 170vmin;
+    }
+  }
+
+
   
   
   

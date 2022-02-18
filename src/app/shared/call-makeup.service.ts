@@ -107,6 +107,16 @@ export class CallMakeupService {
     return this.availableProducts.asObservable();
   }
 
+  fetchMakeupByTag(tag: any): Observable<product[]>{
+    this.loaderChanges.next(true);
+    let url = this.makeUpUrl + '?product_tags='+tag;
+    this.http.get(url).subscribe(res=>{
+      this.loadProduct(Object.values(res));
+      this.loaderChanges.next(false);
+    });
+    return this.availableProducts.asObservable();
+  }
+
   // initiateAProduct(){
   //   this.getMakeup().subscribe((res)=>{
   //     [res].forEach(element => {

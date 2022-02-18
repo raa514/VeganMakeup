@@ -7,6 +7,7 @@
     <ng-template #notLoading>
         <div class="filter-container">
             <div class="filter">
+                <p style="font-size: 3vmin" >Filter</p>
                 <span class="material-icons" (click)="openFilter()" >filter_alt</span>
             </div>
             <div class="line" ></div>
@@ -14,7 +15,7 @@
         <div class="card-container">
             <mat-card class="example-card" *ngFor="let product of products">
                 <mat-card-header>
-                    <div mat-card-avatar class="example-header-image"></div>
+                    <!-- <div mat-card-avatar class="example-header-image"></div> -->
                     <mat-card-title>{{product.brand}} </mat-card-title>
                     <mat-card-subtitle>{{product.name}}</mat-card-subtitle>
                 </mat-card-header>
@@ -30,7 +31,7 @@
                     </p>
                 </mat-card-content>
                 <mat-chip-list  >
-                    <mat-chip *ngFor="let tag of product.tag_list">
+                    <mat-chip appColorTag [tag]="tag" *ngFor="let tag of product.tag_list" (click)="fetchMakeupByTag(tag)"  >
                         {{tag}}
                     </mat-chip>
                     <!-- <button mat-button><mat-icon>cancel</mat-icon> </button> -->
@@ -38,7 +39,7 @@
             </mat-card>
         </div>
         <div class="pagination">
-           <mat-card  (click)="loadMoreProducts()" ><p id="loadMore" >Load more products...</p> </mat-card>
+           <mat-card class="moreContent"  (click)="loadMoreProducts()" ><p id="loadMore" >Load more products...</p> </mat-card>
         </div>
     </ng-template>
 </div>

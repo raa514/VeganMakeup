@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { CallMakeupService } from '../../shared/call-makeup.service';
 import {ProgressSpinnerMode} from '@angular/material/progress-spinner';
 import {MatSnackBar} from '@angular/material/snack-bar';
@@ -24,12 +24,14 @@ export class MakeupProductComponent implements OnInit {
   final: number = 21;
   maxLength: any;
   priceLessThanFlag: boolean = true;
+  tagList: string[]=[];
 
   constructor(
     private makeupSrv:CallMakeupService,
     private _snackBar: MatSnackBar,
     private dialog: MatDialog
   ) {}
+
 
   ngOnInit(): void {
     this.getProducts();
@@ -45,7 +47,7 @@ export class MakeupProductComponent implements OnInit {
       this.products =  Object.values(res);
       this.maxLength = this.products.length;
       this.initiateProducts(this.initial, this.final);
-      console.log(this.products.length);
+      // console.log(this.products);
     })
 
     // this.makeupSrv.getMakeup().subscribe((res)=>{
@@ -61,7 +63,7 @@ export class MakeupProductComponent implements OnInit {
   }
 
   initiateProducts(i: number, f: number){
-    // this.products = this.data;
+    this.getTheTags();
     this.makeupSrv.getProduct().subscribe(res=>{
       this.products = res.slice(i,f);
     })
@@ -131,6 +133,32 @@ export class MakeupProductComponent implements OnInit {
     })
   }
 
+  fetchMakeupByTag(tag: any){
+    this.makeupSrv.fetchMakeupByTag(tag).subscribe(res=>{
+      this.maxLength = res.length;
+    })
+  }
+
+  getTheTags(){
+    this.products.forEach(product=>{
+      this.tagList = product.tag_list;
+      console.log(this.tagList);
+      this.tagList.forEach(tag=>{
+        this.colorTheTag(tag);
+      })
+    })
+  }
+
+  colorTheTag(tag: string){
+    switch (tag) {
+      case 'cruelty free':
+        
+        break;
+    
+      default:
+        break;
+    }
+  }
   
 
 
